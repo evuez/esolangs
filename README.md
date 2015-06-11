@@ -5,7 +5,7 @@ Languages rules are written in interpreters files.
 
 The following examples should print "Hello World!".
 
-### Brainfuck
+### Brainfuck (non-wrapping)
 
 ```python
 from brainfuck import Brainfuck
