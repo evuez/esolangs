@@ -1,9 +1,7 @@
 # Esolangs
 ## Some [esoteric programming languages](https://esolangs.org/) interpreters written in Python
 
-Languages rules are written in interpreters files.
-
-The following examples should print "Hello World!".
+Basic languages rules are written in interpreters files.
 
 ### Brainfuck (non-wrapping)
 
@@ -13,6 +11,7 @@ The following examples should print "Hello World!".
 from brainfuck import Brainfuck
 
 
+# print "Hello World!"
 Brainfuck().execute("""
     ++++++++++[>+++++++>++++++++++>+++>+<
     <<<-]>++.>+.+++++++..+++.>++.<<++++++
@@ -27,6 +26,7 @@ Brainfuck. With "Ook"s.
 from ook import Ook
 
 
+# print "Hello World!"
 Ook().execute("""
     Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.
     Ook. Ook. Ook. Ook. Ook! Ook? Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.
@@ -64,15 +64,28 @@ print(sfi.cells)
 ```
 
 
-### Kipple
+### Kipple (based on the [3rd version of the spec](http://web.archive.org/web/20070224040559/http://rune.krokodille.com/lang/kipple/kipple.html))
 
-Not fully implemented yet, control structure and input are missing.
+Not fully implemented yet, input is missing. You can fill ```Kipple().stacks['i']``` before execution to use it later in the program.
 
 ```python
 from kipple import Kipple
 
 
+# print "Hello World!"
 Kipple().execute("""
     33>o 100>o 108>o 114>o 111>o 87>o 32>o 111>o 108>o 108>o 101>o 72>o
 """)
 ```
+
+### DOGO
+
+Nothing done yet.
+
+### Byte Syze
+
+Even less done.
+
+### Meq
+
+See Byte Syze.
