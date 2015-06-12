@@ -105,7 +105,7 @@ Even less done.
 
 See Byte Syze.
 
-# [DCPU-16](http://web.archive.org/web/20121001104346/http://0x10c.com/doc/dcpu-16.txt)
+### [DCPU-16](http://web.archive.org/web/20121001104346/http://0x10c.com/doc/dcpu-16.txt)
 
 See Meq.
 
