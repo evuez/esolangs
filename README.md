@@ -93,14 +93,14 @@ Kipple().execute("""
 """)
 ```
 
-### DOGO
+### [DOGO](https://esolangs.org/wiki/DOGO)
 
 Nothing done yet.
 
-### Byte Syze
+### [Byte Syze](https://esolangs.org/wiki/Byte_Syze)
 
 Even less done.
 
-### Meq
+### [Meq](https://esolangs.org/wiki/Meq)
 
 See Byte Syze.
