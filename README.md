@@ -11,7 +11,7 @@ Basic languages rules are written in interpreters files.
 from brainfuck import Brainfuck
 
 
-# print "Hello World!"
+# prints "Hello World!"
 Brainfuck().execute("""
     ++++++++++[>+++++++>++++++++++>+++>+<
     <<<-]>++.>+.+++++++..+++.>++.<<++++++
@@ -26,7 +26,7 @@ Brainfuck. With "Ook"s.
 from ook import Ook
 
 
-# print "Hello World!"
+# prints "Hello World!"
 Ook().execute("""
     Ook. Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.
     Ook. Ook. Ook. Ook. Ook! Ook? Ook? Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook. Ook.
@@ -72,9 +72,24 @@ Not fully implemented yet, input is missing. You can fill ```Kipple().stacks['i'
 from kipple import Kipple
 
 
-# print "Hello World!"
+# prints "Hello World!"
 Kipple().execute("""
     33>o 100>o 108>o 114>o 111>o 87>o 32>o 111>o 108>o 108>o 101>o 72>o
+""")
+
+# prints the first 25 numbers of the Fibonacci sequence
+Kipple().execute("""
+    24>n 0>t 1>a
+    (n-1
+      a+0
+      t<a>b+a
+      c<b>a<c
+      n?
+    )
+    (t>@
+      (@>o)
+      32>o
+    )
 """)
 ```
 
