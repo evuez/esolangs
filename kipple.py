@@ -170,3 +170,16 @@ if __name__ == '__main__':
     Kipple().execute("""
         33>o 100>o 108>o 114>o 111>o 87>o 32>o 111>o 108>o 108>o 101>o 72>o
     """)
+    Kipple().execute("""
+        24>n 0>t 1>a
+        (n-1
+          a+0
+          t<a>b+a
+          c<b>a<c
+          n?
+        )
+        (t>@
+          (@>o)
+          32>o
+        )
+    """)
