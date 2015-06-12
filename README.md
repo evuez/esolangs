@@ -7,6 +7,8 @@ The following examples should print "Hello World!".
 
 ### Brainfuck (non-wrapping)
 
+```brainfuck.py``` includes a ```CyclingInt``` class that can be used to get a wrapping implementation.
+
 ```python
 from brainfuck import Brainfuck
 
