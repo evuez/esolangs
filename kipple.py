@@ -6,7 +6,7 @@
 - Push the topmost left stack item minus the right operand onto the stack
 ? Takes only one operand; clears the left stack if its topmost item is 0
 
-Control structure and input are not implemented yet.
+Input is not implemented yet.
 """
 
 
@@ -28,11 +28,11 @@ class Stack(list):
     def push(self, value):
         if not isinstance(value, int):
             raise TypeError
-        if self.name == '@':
-            value = chr(value)
         if self.name == 'i':
             raise Stack.OnlyInputError()
-        self.append(value)
+        if self.name != '@':
+            return self.append(value)
+        [self.append(ord(v)) for v in str(value)]
 
 
 class Kipple(object):
@@ -43,11 +43,14 @@ class Kipple(object):
         '+': 'sum',
         '-': 'sub',
         '?': 'clear',
+        '(': 'loop_start',
+        ')': 'loop_end',
     }
 
     def __init__(self):
         self.stacks = {s:Stack(s) for s in self.STACKS_IDENTIFIERS}
         self.pointer = 0
+        self.loopstack = []
 
     def execute(self, program):
         self.program = ' '.join(program.split())
@@ -59,13 +62,19 @@ class Kipple(object):
         self.output()
 
     def last(self, stack):
-        return self.stacks[stack][-1]
+        try:
+            return self.stacks[stack][-1]
+        except IndexError:
+            return 0
 
     def pop(self, stack):
-        return self.satcks[stack].pop()
+        return self.stacks[stack].pop()
 
     def push(self, stack, value):
         self.stacks[stack].push(value)
+
+    def goto(self, pointer):
+        self.pointer = pointer
 
     def get_value(self, from_right=False):
         """
@@ -116,7 +125,7 @@ class Kipple(object):
         topmost item of the left stack onto the left stack
         """
         stack = self.get_stack(True)
-        self.push(stack, self.last(stack) + get_value(True))
+        self.push(stack, self.last(stack) + self.get_value(True))
 
     def sub(self):
         """
@@ -124,7 +133,7 @@ class Kipple(object):
         right operand onto the stack
         """
         stack = self.get_stack(True)
-        self.push(stack, self.last(stack) - get_value(True))
+        self.push(stack, self.last(stack) - self.get_value(True))
 
     def clear(self):
         """
@@ -134,6 +143,16 @@ class Kipple(object):
         stack = self.get_stack(True)
         if not self.last(stack):
             self.stacks[stack].clear()
+
+    def loop_start(self):
+        self.loopstack.append((self.pointer, self.get_stack()))
+
+    def loop_end(self):
+        loop = self.loopstack[-1]
+        if self.last(loop[1]):
+            self.goto(loop[0] + 1)
+        else:
+            self.loopstack.pop()
 
     def output(self):
         print(''.join(chr(v) for v in self.stacks['o'][::-1]))
@@ -145,7 +164,6 @@ class Kipple(object):
             if token in self.OPERATORS:
                 return token
             self.pointer += 1
-
 
 
 if __name__ == '__main__':
