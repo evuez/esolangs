@@ -104,9 +104,3 @@ Even less done.
 ### Meq
 
 See Byte Syze.
-
-### [DCPU-16](http://web.archive.org/web/20121001104346/http://0x10c.com/doc/dcpu-16.txt)
-
-See Meq.
-
-Not esoteric, but thought it would be fun to implement too.
