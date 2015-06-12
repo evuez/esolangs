@@ -15,6 +15,24 @@
 import logging
 
 
+class CyclingInt(int):
+    """
+    Fill up cells with this instead of ints to have a wrapping implementation
+    """
+
+    def __add__(self, other):
+        x = super().__add__(other)
+        while x > 255:
+            x -= 255
+        return self.__class__(x)
+
+    def __sub__(self, other):
+        x = super().__sub__(other)
+        while x < 0:
+            x += 255
+        return self.__class__(x)
+
+
 class Brainfuck(object):
     """
     Non-wrapping interpreter
@@ -34,7 +52,8 @@ class Brainfuck(object):
     def __init__(self):
         self.c_pointer = 0 # cells pointer
         self.p_pointer = 0 # program pointer
-        self.cells = [0] * 30000
+        self.cells = [0] * 30000 # Non-wrapping
+        # self.cells = [CyclingInt()] * 30000 # Wrapping
         self.bracestack = []
 
     @property
